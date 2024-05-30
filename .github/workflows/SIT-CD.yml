@@ -1,0 +1,62 @@
+name: SIT Build Release
+
+on:
+    workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  
+  build:
+    permissions: write-all
+
+    strategy:
+      matrix:
+        configuration: [Release]
+
+    runs-on: ubuntu-latest
+
+    env:
+      SolutionName: StayInTarkov                              
+      ProjectClient: Source/StayInTarkov.csproj      
+      ProjectPrePatcher: SIT.WildSpawnType.PrePatcher/SIT.WildSpawnType.PrePatcher.csproj          
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 6.0.x
+
+    - name: dotnet Restore
+      run: dotnet restore
+
+    - name: dotnet build
+      run: |
+        mkdir ${{ env.SolutionName }}-${{ matrix.configuration }}
+        dotnet build ${{ env.ProjectClient }} -c ${{ matrix.configuration }} -o ${{ env.SolutionName }}-${{ matrix.configuration }}
+        dotnet build ${{ env.ProjectPrePatcher }} -c ${{ matrix.configuration }} -o ${{ env.SolutionName }}-${{ matrix.configuration }}
+
+    - name: Get version from DLL
+      id: extract-version
+      run: |
+        version=`monodis --assembly ${{ env.SolutionName }}-${{ matrix.configuration }}/StayInTarkov.dll | grep Version | awk '{print $2}'`
+        echo "VERSION=$version" >> "$GITHUB_ENV"
+
+    - name: Zip remaining files
+      run: |
+        cd ${{ env.SolutionName }}-${{ matrix.configuration }}
+        zip -r ../${{ env.SolutionName }}-${{ matrix.configuration }}.zip ./*.dll
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+          draft: true
+          generate_release_notes: true
+          files: ${{ env.SolutionName }}-${{ matrix.configuration }}.zip
+          tag_name: StayInTarkov.Client-${{ env.VERSION }}
