@@ -1,0 +1,72 @@
+{
+  "format": 1,
+  "restore": {
+    "G:\\youxi\\takefu\\StayInTarkov.Client-development-3.9\\SIT.WildSpawnType.PrePatcher\\SIT.WildSpawnType.PrePatcher.csproj": {}
+  },
+  "projects": {
+    "G:\\youxi\\takefu\\StayInTarkov.Client-development-3.9\\SIT.WildSpawnType.PrePatcher\\SIT.WildSpawnType.PrePatcher.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\youxi\\takefu\\StayInTarkov.Client-development-3.9\\SIT.WildSpawnType.PrePatcher\\SIT.WildSpawnType.PrePatcher.csproj",
+        "projectName": "SIT.WildSpawnType.PrePatcher",
+        "projectPath": "G:\\youxi\\takefu\\StayInTarkov.Client-development-3.9\\SIT.WildSpawnType.PrePatcher\\SIT.WildSpawnType.PrePatcher.csproj",
+        "packagesPath": "C:\\Users\\w1239\\.nuget\\packages\\",
+        "outputPath": "G:\\youxi\\takefu\\StayInTarkov.Client-development-3.9\\SIT.WildSpawnType.PrePatcher\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "G:\\youxi\\takefu\\StayInTarkov.Client-development-3.9\\NuGet.Config",
+          "C:\\Users\\w1239\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net471"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.bepinex.dev/v3/index.json": {}
+        },
+        "frameworks": {
+          "net471": {
+            "targetAlias": "net471",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net471": {
+          "targetAlias": "net471",
+          "dependencies": {
+            "BepInEx.Core": {
+              "target": "Package",
+              "version": "[5.4.21, )"
+            },
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
+            "Newtonsoft.Json": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[13.0.2, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
